@@ -9,7 +9,7 @@ pipeline {
         stage('checkout') {
             steps {
                      script {
-                         checkout ($class: 'GitSCM', branches: [[name: '/dev' ]], doGenerateSubmoduleConfiguartion: false, extensions:[], submoduleCfg: [],  userRemoteConfigs: [[url:  GIT_REPO_URL]])
+                         checkout ($class: 'GitSCM', branches: [[name: '/dev' ]], userRemoteConfigs: [[url:  GIT_REPO_URL]])
                      }
                 }
             }
