@@ -13,7 +13,7 @@ pipeline {
                      }
                 }
             }
-        }
+        
         stage('List folders') {
             steps {
                 script {
@@ -22,6 +22,6 @@ pipeline {
                 }
             }
         }
-
+    }
     }
 
