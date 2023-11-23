@@ -22,12 +22,12 @@ properties([
         ],
         string(description: 'Enter the GitHub Repo URL', name: 'Repo URL', defaultValue: ''),
         
-        [
+   [
             $class: 'CascadeChoiceParameter',
             choiceType: 'PT_SINGLE_SELECT',
             description: 'Select the Folder',
             referencedParameters: 'Repo URL,JobName',
-            name: 'FOLDER_TYPE',
+            name: 'ENV_TYPE',
             script: [
                 $class: 'GroovyScript',
                 fallbackScript: [
@@ -46,13 +46,13 @@ properties([
                       }
                       else
                       {
-                        def parts = JobName.split('-');
+                        def parts = JobName.split('_');
                         if(parts.length > 2){
                             return [parts[2]]
                         } else {
                             def list = []
                             list.add('')
-                            def dir = new File("/tmp/application")
+                            def dir = new File("/tmp/application/")
                             dir.eachFile (FileType.DIRECTORIES) { file ->
                                 list << file.name
                             }
