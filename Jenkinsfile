@@ -46,7 +46,7 @@ properties([
                       }
                       else
                       {
-                        def parts = JobName.split('_');
+                        def parts = JobName.split('-');
                         if(parts.length > 2){
                             return [parts[2]]
                         } else {
