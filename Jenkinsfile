@@ -41,18 +41,13 @@ properties([
                     script:  
                     '''
                       import groovy.io.FileType
-                      if (Repo URL.isEmpty() || Repo URL==""){
-                        return ''
-                      }
-                      else
-                      {
-                            def list = []
-                            list.add('')
-                            def dir = new File("/tmp/application/")
-                            dir.eachFile (FileType.DIRECTORIES) { file ->
-                                list << file.name
+                      def list = []
+                      list.add('')
+                      def dir = new File("/tmp/application/")
+                      dir.eachFile (FileType.DIRECTORIES) { file ->
+                      list << file.name
                         } 
-                      }
+                      
                     '''
                 ]
             ]
