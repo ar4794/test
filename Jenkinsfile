@@ -1,15 +1,25 @@
 pipeline {
     agent any
 
+    environment {
+        GIT_REPO_URL='https://github.com/ar4794/test'
+    }
+    
     stages {
-        stage('Build') {
+        stage('checkout') {
             steps {
-                echo 'Building..'
+                     script {
+                         checkout ($class: 'GitSCM', branches: [[name: '/dev' ]], doGenerateSubmoduleConfiguartion: false, extensions:[], submoduleCfg: [],  userRemoteConfigs: [[url:  GIT_REPO_URL]])
+                     }
+                }
             }
         }
-        stage('Test') {
+        stage('List folders') {
             steps {
-                echo 'Testing..'
+                script {
+                    def folder= sh (script: 'ls -d */', returnStdout: true).trim()
+                    echo "Folders in the reporsitory: ${folder}"
+                }
             }
         }
         stage('Deploy') {
