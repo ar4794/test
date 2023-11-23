@@ -27,7 +27,7 @@ properties([
             choiceType: 'PT_SINGLE_SELECT',
             description: 'Select the Folder',
             referencedParameters: 'Repo URL,JobName',
-            name: 'Folder Name',
+            name: 'FolderName',
             script: [
                 $class: 'GroovyScript',
                 fallbackScript: [
