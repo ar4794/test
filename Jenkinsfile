@@ -17,7 +17,7 @@ pipeline {
         stage('List folders') {
             steps {
                 script {
-                    def folder= sh(script: 'ls -d */', returnStdout: true).trim()
+                    def folder= sh(script: 'ls /test', returnStdout: true).trim()
                     echo "Folders in the reporsitory: ${folder}"
                 }
             }
